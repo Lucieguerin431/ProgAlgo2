@@ -3,14 +3,20 @@
 #include <time.h>
 
 int isMandelbrot(Point z, int n, Point point){
-    // recursiv Mandelbrot
+    if(n>0){
+        if(z.length()>2){
+                return n;} 
+        else {
+            float zx=z.x;
+            float zy=z.y;
+            float pointx=point.x;
+            float pointy=point.y;
+            Point newP;
+            newP.x=(zx*zx + zy*zy + pointx);
+            newP.y=(2*zx*zy+pointy);
+            return isMandelbrot(newP, n-1, pointy);}} 
+    else {return 0;}
 
-    // check n
-
-    // check length of z
-    // if Mandelbrot, return 1 or n (check the difference)
-    // otherwise, process the square of z and recall
-    // isMandebrot
     return 0;
 }
 
