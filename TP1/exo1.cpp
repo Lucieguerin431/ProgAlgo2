@@ -1,7 +1,7 @@
 #include "tp1.h"
 #include <QApplication>
 #include <time.h>
-
+//aaa
 #define return_and_display(result) return _.store(result);
 
 long power(long value, long n)
@@ -14,7 +14,6 @@ long power(long value, long n)
     } else {
         return_and_display(value);
     }
-
     // return_and_display shows the result in the window and returns it
     return_and_display(1);
 }
