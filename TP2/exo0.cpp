@@ -1,6 +1,5 @@
 #include <QApplication>
 #include <time.h>
-
 #include "tp2.h"
 
 MainWindow* w = nullptr;
