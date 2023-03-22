@@ -9,33 +9,71 @@ struct Noeud{
 
 struct Liste{
     Noeud* premier;
+    int n;
+    Noeud *dernier;
     // your code
 };
 
 struct DynaTableau{
     int* donnees;
+    int taille;
+    int place;
     // your code
 };
 
 
 void initialise(Liste* liste)
 {
-
+    liste->premier=nullptr;
+    liste->dernier=nullptr;
+    liste->n=0;
 }
 
 bool est_vide(const Liste* liste)
-{
-    return false;
+{   
+    if (liste->premier == nullptr)
+    {
+        return true;
+    }
+    else {return false;}
 }
 
 void ajoute(Liste* liste, int valeur)
-{
+{   
+    Noeud *nouveau=(Noeud*)malloc(sizeof(Noeud));
+    if(nouveau==nullptr){
+        cout<<"erreur allocation de mémoire"<<endl;
+    }
+    
+    nouveau->donnee=valeur;
+    nouveau->suivant=nullptr;
+
+    if (liste->premier==nullptr)
+    {
+        liste->premier=nouveau;
+        liste->dernier=nouveau;
+    }
+    else{
+        liste->dernier->suivant=nouveau;
+        liste->dernier=liste->dernier->suivant;
+    }
+
+    liste->n=liste->n+1;
 
 }
 
 void affiche(const Liste* liste)
 {
+    if (liste==nullptr)
+    {
+        cout<<"liste vide"<<endl;
+    }
+    Noeud* actuel= liste->premier;
 
+    while(actuel != nullptr){
+        cout<<"valeur : "<<actuel->donnee<<endl;
+        actuel=actuel->suivant;
+    }
 }
 
 int recupere(const Liste* liste, int n)
