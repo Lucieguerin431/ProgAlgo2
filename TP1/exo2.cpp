@@ -9,6 +9,12 @@ int fibonacci(int value)
     Context _("fibonacci", value); // do not care about this, it allow the display of call stack
 
     // your code
+    if(value==0){
+        return_and_display(0);} 
+        else if (value==1){
+        return_and_display(1);} 
+    else {
+        return_and_display(fibonacci(value-1)+fibonacci(value-2));}
 
     return_and_display(value);
 }
