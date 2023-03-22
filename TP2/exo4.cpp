@@ -3,22 +3,46 @@
 
 #include "tp2.h"
 
-
 MainWindow* w=nullptr;
 
 void recursivQuickSort(Array& toSort, int size)
 {
 	// stop statement = condition + return (return stop the function even if it does not return anything)
-	
+    if (size<=1)
+    {
+        return;
+    }
+    
 	Array& lowerArray = w->newArray(size);
 	Array& greaterArray= w->newArray(size);
 	int lowerSize = 0, greaterSize = 0; // effectives sizes
 
-	// split
-	
-	// recursiv sort of lowerArray and greaterArray
+    int pivot = toSort[0];
+        for(int i=1; i<size; i++){
+            if(toSort[i]<pivot){
+                lowerArray[lowerSize]=toSort[i];
+                lowerSize++;} 
+            else {
+                greaterArray[greaterSize]=toSort[i];
+                greaterSize++;
+            }
+        }
 
-	// merge
+        // recursiv sort of lowerArray and greaterArray
+        recursivQuickSort(lowerArray, lowerSize);
+        recursivQuickSort(greaterArray, greaterSize);
+
+        // merge
+        for(int j=0; j<lowerSize; j++){
+            toSort[j]=lowerArray[j];
+        }
+        
+        toSort[lowerSize]=pivot;
+
+        for(int k=0; k<greaterSize; k++){
+            toSort[lowerSize+k+1]=greaterArray[k];
+        }
+
 }
 
 void quickSort(Array& toSort){
