@@ -9,9 +9,12 @@ int search(int value, Array& toSort, int size)
 {
     Context _("search", value, size); // do not care about this, it allow the display of call stack
 
-    // your code
-    // check the last cell and if it does not correspond
-    // then consider a smaller array when recalling search
+    if(size>0){
+        if(value==toSort[size-1]){
+            return_and_display(size-1);} 
+        else {return_and_display(search(value, toSort, size-1));}} 
+    else {return_and_display(-1);}
+
 }
 
 int main(int argc, char *argv[])
